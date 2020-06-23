@@ -1,5 +1,5 @@
 # Core directory files
-/Core/*
+# /Core/*
 !Please_copy_cubism_core_for_web
 # Package files
 node_modules/

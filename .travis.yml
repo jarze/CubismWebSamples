@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+  - 10 # use nodejs v10 LTS
+cache: npm
+branches:
+  only:
+    - demo # build master branch only
+script:
+  - cd Samples/TypeScript/Demo
+  - npm install
+  - npm run-script build:prod
+  - cp -r ./dist ../../../Core # 打包文件
+  - cp -r ../../Resources ../../../Core # 资源文件，需注意配置的相关的相关目录层级
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GH_TOKEN # Set in the settings page of your repository, as a secure variable
+  keep_history: true
+  local_dir: Core
+  on:
+    branch: demo
